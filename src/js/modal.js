@@ -5,14 +5,14 @@ const th = document.querySelector("#th")
 
 const diasSemana = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"]
 const dayWeekend = [
-  {date: "#"},
-  {date: "Lunes", day: '2018-10-29'},
-  {date: "Martes", day: '2018-10-30'},
-  {date: "Miercoles", day: '2018-10-31'},
-  {date: "Jueves", day: '2018-11-01'},
-  {date: "Viernes", day: '2018-11-02'},
-  {date: "Sabado", day: '2018-11-03'},
-  {date: "Domingo", day: '2018-11-04'},
+  {date: "#", key: 0},
+  {date: "Lunes", day: '2018-10-29', key: 1},
+  {date: "Martes", day: '2018-10-30', key: 2},
+  {date: "Miercoles", day: '2018-10-31', key: 3},
+  {date: "Jueves", day: '2018-11-01', key: 4},
+  {date: "Viernes", day: '2018-11-02', key: 5},
+  {date: "Sabado", day: '2018-11-03', key: 6},
+  {date: "Domingo", day: '2018-11-04', key: 7},
 ]
 // const programName1 = null
 const getData2 = () =>{
@@ -86,13 +86,17 @@ const genera_tabla = (dateDeHora3, completeData) => {
         celda.appendChild(textCelda)
         hilera.appendChild(celda)
       }
-      if (i !== 0 && j !== 0) {
-        // let date = completeData[j]
-        let celda = document.createElement('td')
-        let textCelda = document.createTextNode(date)
-        celda.appendChild(textCelda)
-        hilera.appendChild(celda)
+      for (var l = 0; l < completeData.length; l++) {
+        // console.log(completeData[l].string);
+        if (i !== 0 && j !== 0 && dateDeHora3[i] == completeData[l].string && completeData[l].date == dayWeekend[j].day) {
+          // let date = completeData[j]
+          let celda = document.createElement('td')
+          let textCelda = document.createTextNode(completeData[l].programName)
+          celda.appendChild(textCelda)
+          hilera.appendChild(celda)
+        }
       }
+
     }
     tbody.appendChild(hilera)
   }
@@ -105,6 +109,3 @@ const genera_tabla = (dateDeHora3, completeData) => {
 getData2()
 // valoreUnicos()
 genera_tabla()
-// dayWeekend1()
-
-// paintTable()
